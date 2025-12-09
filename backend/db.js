@@ -10,10 +10,8 @@ const poolConfig = {
 };
 
 // Enable SSL for production environments (Render Postgres requires SSL)
-if (process.env.NODE_ENV === 'production' || (process.env.DATABASE_URL && process.env.DATABASE_URL.includes('render.com'))) {
-  poolConfig.ssl = {
-    rejectUnauthorized: false,
-  };
+if (process.env.NODE_ENV === 'production' || (process.env.DATABASE_URL && (process.env.DATABASE_URL.includes('render.com') || process.env.DATABASE_URL.includes('supabase.co')))) {
+  poolConfig.ssl = { rejectUnauthorized: false };
 }
 
 const pool = new Pool(poolConfig);
