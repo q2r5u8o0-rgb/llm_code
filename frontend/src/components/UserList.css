@@ -1,0 +1,159 @@
+.user-list-container {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.user-list-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.no-users {
+  text-align: center;
+  padding: 40px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  color: #999;
+}
+
+.user-list {
+  display: grid;
+  gap: 15px;
+}
+
+.user-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-card:hover {
+  background: #f0f0f0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-info h3 {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.user-info p {
+  color: #666;
+  margin: 5px 0;
+  font-size: 0.95em;
+}
+
+.user-info .date {
+  color: #999;
+  font-size: 0.85em;
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.edit-btn,
+.delete-btn,
+.save-btn,
+.cancel-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #da190b;
+  transform: translateY(-2px);
+}
+
+.save-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #45a049;
+}
+
+.cancel-btn {
+  background: #999;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #777;
+}
+
+.edit-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-form input {
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.edit-form input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-buttons button {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .user-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-actions {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .user-actions button {
+    flex: 1;
+  }
+}

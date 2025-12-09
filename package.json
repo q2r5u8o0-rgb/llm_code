@@ -1,0 +1,14 @@
+{
+  "name": "copilot-test-site",
+  "version": "1.0.0",
+  "description": "Full-stack app with Node.js, Express, PostgreSQL and React",
+  "private": true,
+  "scripts": {
+    "start": "echo 'Запусти backend и frontend в разных терминалах'",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  }
+}
