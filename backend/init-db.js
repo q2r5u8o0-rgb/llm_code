@@ -27,14 +27,16 @@ export async function initializeDatabase() {
     `);
 
     console.log('✅ База данных инициализирована успешно!');
-    process.exit(0);
+    return;
   } catch (err) {
     console.error('❌ Ошибка при инициализации БД:', err);
-    process.exit(1);
+    throw err;
   }
 }
 
 // If run as a script directly (not imported)
-if (import.meta.url === `file://${process.argv[1]}`) {
-  initializeDatabase();
+if (typeof process !== 'undefined' && process.argv && process.argv[1] && process.argv[1].endsWith('init-db.js')) {
+  initializeDatabase()
+    .then(() => process.exit(0))
+    .catch(() => process.exit(1));
 }
