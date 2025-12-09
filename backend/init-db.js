@@ -1,6 +1,6 @@
 import pool from './db.js';
 
-async function initializeDatabase() {
+export async function initializeDatabase() {
   try {
     // Создаём таблицу для пользователей
     await pool.query(`
@@ -34,4 +34,7 @@ async function initializeDatabase() {
   }
 }
 
-initializeDatabase();
+// If run as a script directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  initializeDatabase();
+}

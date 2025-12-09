@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import pool from './db.js';
+import { initializeDatabase } from './init-db.js';
 
 dotenv.config();
 
@@ -147,8 +148,21 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
-  console.log(`📊 Проверка здоровья: http://localhost:${PORT}/health`);
-});
+// Initialize database on startup
+async function start() {
+  try {
+    console.log('🔧 Инициализация базы данных...');
+    await initializeDatabase();
+    console.log('✅ База данных инициализирована');
+  } catch (err) {
+    console.error('⚠️ Ошибка при инициализации БД (может быть уже инициализирована):', err.message);
+  }
+
+  // Start server
+  app.listen(PORT, () => {
+    console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
+    console.log(`📊 Проверка здоровья: http://localhost:${PORT}/health`);
+  });
+}
+
+start();
