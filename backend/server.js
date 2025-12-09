@@ -148,6 +148,17 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Debug DB endpoint (temporary)
+app.get('/debug/db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ ok: true, now: result.rows[0] });
+  } catch (err) {
+    console.error('Debug DB error:', err);
+    res.status(500).json({ error: err.message, stack: err.stack });
+  }
+});
+
 // Initialize database on startup
 async function start() {
   try {
